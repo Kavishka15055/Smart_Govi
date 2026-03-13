@@ -112,6 +112,20 @@ class AuthService {
     
     return null;
   }
+
+  async checkFarmSetupStatus(userId: string): Promise<boolean> {
+  try {
+    const userDoc = await getDoc(doc(db, 'users', userId));
+    if (userDoc.exists()) {
+      return userDoc.data()?.farmSetupComplete || false;
+    }
+    return false;
+  } catch (error) {
+    console.error('Error checking farm setup:', error);
+    return false;
+  }
+}
+
 }
 
 export const authService = new AuthService();
