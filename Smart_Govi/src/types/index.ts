@@ -306,3 +306,56 @@ export const QUICK_ACTIONS: QuickAction[] = [
     route: 'History',
   },
 ];
+
+
+// Form data types for transactions
+export interface IncomeFormData {
+  date: Date;
+  categoryId: string;
+  categoryName: string;
+  quantity: string;
+  unit: string;
+  amount: string;
+  notes: string;
+}
+
+export interface ExpenseFormData {
+  date: Date;
+  categoryId: string;
+  categoryName: string;
+  amount: string;
+  notes: string;
+  receipt?: {
+    uri: string;
+    fileName: string;
+    fileSize: number;
+  };
+}
+
+export interface FormErrors {
+  [key: string]: string;
+}
+
+// Category types for picker
+export interface PickerCategory {
+  id: string;
+  name: string;
+  defaultUnit?: string;
+}
+
+// Validation result
+export interface ValidationResult {
+  isValid: boolean;
+  errors: FormErrors;
+}
+
+// Success modal props
+export interface SuccessModalProps {
+  visible: boolean;
+  type: 'income' | 'expense';
+  amount: number;
+  categoryName: string;
+  onClose: () => void;
+  onViewHistory: () => void;
+  onAddAnother: () => void;
+}
