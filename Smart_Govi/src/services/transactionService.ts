@@ -44,8 +44,12 @@ class TransactionService {
   // Add Expense Transaction
   async addExpense(transaction: Omit<ExpenseTransaction, 'id' | 'createdAt'>): Promise<string> {
     try {
+      // Remove undefined fields - Firestore doesn't accept undefined values
+      const cleanTransaction = Object.fromEntries(
+        Object.entries(transaction).filter(([_, value]) => value !== undefined)
+      );
       const docRef = await addDoc(collection(db, 'expenses'), {
-        ...transaction,
+        ...cleanTransaction,
         type: 'expense',
         date: Timestamp.fromDate(transaction.date),
         createdAt: Timestamp.now(),
