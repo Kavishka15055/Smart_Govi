@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 // Import screens
 import DashboardScreen from '../screens/main/DashboardScreen';
 import StatsScreen from '../screens/main/StatsScreen';
-import ListScreen from '../screens/main/ListScreen';
+import HistoryScreen from '../screens/main/HistoryScreen'; // Changed from ListScreen
 import ProfileScreen from '../screens/main/ProfileScreen';
 import AddIncomeScreen from '../screens/main/AddIncomeScreen';
 import AddExpenseScreen from '../screens/main/AddExpenseScreen';
@@ -73,11 +73,11 @@ const MainTabNavigator: React.FC = () => {
       
       <Tab.Screen
         name="List"
-        component={ListScreen}
+        component={HistoryScreen}
         options={{
-          tabBarLabel: 'List',
+          tabBarLabel: 'History',
           tabBarIcon: ({ color, size }) => (
-            <Icon name="list" size={size} color={color} />
+            <Icon name="history" size={size} color={color} />
           ),
         }}
       />
