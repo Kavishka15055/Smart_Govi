@@ -219,5 +219,4 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
 });
-
 export default HistoryScreen;
